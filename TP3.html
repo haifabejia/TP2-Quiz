@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP3 - Mise en page CSS Grid Responsive</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: grid;
+      height: 100vh;
+      width: 100vw;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      gap: 10px;
+      padding: 10px;
+      background-color: #f7f7f7;
+    }
+
+    header, nav, article, aside, footer {
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #999;
+    }
+
+    header, footer {
+      background-color: #ffe9a9;
+    }
+
+    nav, aside {
+      background-color: #d5ccff;
+    }
+
+    article {
+      background-color: #e5e88b;
+    }
+
+    header {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ========== Desktop Layout ========== */
+    @media screen and (min-width: 640px) {
+      body {
+        grid-template-columns: minmax(150px, 1fr) 3fr minmax(150px, 1fr);
+        grid-template-rows: minmax(80px, auto) 1fr minmax(60px, auto);
+        grid-template-areas:
+          "header  header  header"
+          "nav     article aside"
+          "footer  footer  footer";
+      }
+
+      header { grid-area: header; }
+      nav { grid-area: nav; }
+      article { grid-area: article; }
+      aside { grid-area: aside; }
+      footer { grid-area: footer; }
+    }
+
+    /* ========== Mobile Layout ========== */
+    @media screen and (max-width: 639px) {
+      body {
+        grid-template-rows: repeat(5, minmax(60px, auto));
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "article"
+          "nav"
+          "aside"
+          "footer";
+      }
+
+      header { grid-area: header; }
+      nav { grid-area: nav; }
+      article { grid-area: article; }
+      aside { grid-area: aside; }
+      footer { grid-area: footer; }
+    }
+  </style>
+</head>
+<body>
+  <header>Header</header>
+  <nav>Navigation</nav>
+  <article>
+    <h1>Bienvenue dans mon article</h1>
+    <p>Ceci est une démonstration de mise en page CSS Grid responsive. Le contenu principal s'adapte à la taille de l'écran, que ce soit sur mobile ou desktop.</p>
+    <p>CSS Grid permet de créer facilement des mises en page complexes, tout en gardant un code propre et organisé.</p>
+  </article>
+  <aside>
+    <h2>Aside</h2>
+    <p>Contenu secondaire : liens, infos complémentaires, etc.</p>
+  </aside>
+  <footer>Footer - TP3 CSS Grid Responsive | VotreNom</footer>
+</body>
+</html>
